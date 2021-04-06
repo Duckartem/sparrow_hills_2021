@@ -7,7 +7,7 @@ class Complex {
 public:
     Complex() {
     }
-
+    
     Complex(const double real, const double imaginary) {
     	_real = real;
     	_imaginary = imaginary;
@@ -60,20 +60,17 @@ public:
     }
 
     Complex operator*(const Complex& other) const {
-    	Complex copy2(* this);
-    	Complex copy1(_real, _imaginary);
+    	
     	Complex answer(0, 0);
-    	answer._real += (copy1._real * copy2._real - copy1._imaginary * copy2._imaginary);
-    	answer._imaginary += (copy1._imaginary * copy2._real + copy1._real * copy2._imaginary);
+    	answer._real += (_real * other._real - _imaginary * other._imaginary);
+    	answer._imaginary += (_imaginary * other._real + _real * other._imaginary);
     	return answer;
     }
 
     Complex operator/(const Complex& other) const {
-    	Complex copy2(* this);
-    	Complex copy1(_real, _imaginary);
     	Complex answer(0, 0);
-    	answer._real += (copy1._real * copy2._real + copy1._imaginary * copy2._imaginary) / (copy2._real * copy2._real + copy2._imaginary * copy2._imaginary);
-    	answer._imaginary += (copy1._imaginary * copy2._real - copy1._real * copy2._imaginary) / (copy2._real * copy2._real + copy2._imaginary * copy2._imaginary);
+    	answer._real += (_real * other._real + other._imaginary * _imaginary) / (other._real * other._real + other._imaginary * other._imaginary);
+    	answer._imaginary += (_imaginary * other._real - _real * other._imaginary) / (other._real * other._real + other._imaginary * other._imaginary);
     	return answer;
     }
 
