@@ -21,6 +21,7 @@ public:
     Complex& operator=(const Complex& copied) {
     	_real = copied._real;
     	_imaginary = copied._imaginary;
+    	return *this; 
     }
 
     ~Complex() {
@@ -60,7 +61,6 @@ public:
     }
 
     Complex operator*(const Complex& other) const {
-    	
     	Complex answer(0, 0);
     	answer._real += (_real * other._real - _imaginary * other._imaginary);
     	answer._imaginary += (_imaginary * other._real + _real * other._imaginary);
